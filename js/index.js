@@ -12,6 +12,7 @@ window.onload = () => {
       constructor(ctx) {
           this.ctx = ctx
           this.bg = new Background(ctx)
+          this.car = new Car(ctx)
 
           this.interval = null
       }
@@ -36,13 +37,14 @@ window.onload = () => {
 
       draw() {
         this.bg.draw()
+        this.car.draw()
       }
     
       move() {
         this.bg.move()
       }
     }
-    
+
     class Background {
       constructor(ctx) {
         this.ctx = ctx
@@ -83,7 +85,30 @@ window.onload = () => {
         }
       }
     }
-  
+
+    class Car {
+      constructor(ctx) {
+        this.ctx = ctx
+        this.x = 200
+        this.y = 530
+        this.w = 100
+        this.h = 100
+    
+        this.img = new Image()
+        this.img.src = '../images/car.png'
+      }
+
+      draw() {
+        this.ctx.drawImage(
+        this.img,
+        this.x,
+        this.y,
+        this.w,
+        this.h
+        )
+      }
+    }
+
     const game = new Game(ctx)
   
     game.start()
